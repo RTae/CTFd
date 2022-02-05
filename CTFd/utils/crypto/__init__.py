@@ -2,7 +2,7 @@ import hashlib
 
 from passlib.hash import bcrypt_sha256
 
-from CTFd.utils import string_types
+from utils import string_types
 
 
 def hash_password(plaintext):

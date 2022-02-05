@@ -3,17 +3,17 @@ from typing import List
 from flask import request
 from flask_restx import Namespace, Resource
 
-from CTFd.api.v1.helpers.request import validate_args
-from CTFd.api.v1.helpers.schemas import sqlalchemy_to_pydantic
-from CTFd.api.v1.schemas import APIDetailedSuccessResponse, APIListSuccessResponse
-from CTFd.cache import clear_config, clear_standings
-from CTFd.constants import RawEnum
-from CTFd.models import Configs, Fields, db
-from CTFd.schemas.config import ConfigSchema
-from CTFd.schemas.fields import FieldSchema
-from CTFd.utils import set_config
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.helpers.models import build_model_filters
+from api.v1.helpers.request import validate_args
+from api.v1.helpers.schemas import sqlalchemy_to_pydantic
+from api.v1.schemas import APIDetailedSuccessResponse, APIListSuccessResponse
+from cache import clear_config, clear_standings
+from constants import RawEnum
+from models import Configs, Fields, db
+from schemas.config import ConfigSchema
+from schemas.fields import FieldSchema
+from utils import set_config
+from utils.decorators import admins_only
+from utils.helpers.models import build_model_filters
 
 configs_namespace = Namespace("configs", description="Endpoint to retrieve Configs")
 

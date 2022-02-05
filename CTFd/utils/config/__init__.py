@@ -3,9 +3,9 @@ import time
 
 from flask import current_app as app
 
-from CTFd.constants.themes import DEFAULT_THEME
-from CTFd.utils import get_app_config, get_config
-from CTFd.utils.modes import TEAMS_MODE, USERS_MODE
+from constants.themes import DEFAULT_THEME
+from utils import get_app_config, get_config
+from utils.modes import TEAMS_MODE, USERS_MODE
 
 
 def ctf_name():

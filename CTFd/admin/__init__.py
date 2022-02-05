@@ -18,16 +18,16 @@ from flask import (
 admin = Blueprint("admin", __name__)
 
 # isort:imports-firstparty
-from CTFd.admin import challenges  # noqa: F401
-from CTFd.admin import notifications  # noqa: F401
-from CTFd.admin import pages  # noqa: F401
-from CTFd.admin import scoreboard  # noqa: F401
-from CTFd.admin import statistics  # noqa: F401
-from CTFd.admin import submissions  # noqa: F401
-from CTFd.admin import teams  # noqa: F401
-from CTFd.admin import users  # noqa: F401
-from CTFd.cache import cache, clear_config, clear_pages, clear_standings
-from CTFd.models import (
+from admin import challenges  # noqa: F401
+from admin import notifications  # noqa: F401
+from admin import pages  # noqa: F401
+from admin import scoreboard  # noqa: F401
+from admin import statistics  # noqa: F401
+from admin import submissions  # noqa: F401
+from admin import teams  # noqa: F401
+from admin import users  # noqa: F401
+from cache import cache, clear_config, clear_pages, clear_standings
+from models import (
     Awards,
     Challenges,
     Configs,
@@ -41,16 +41,16 @@ from CTFd.models import (
     Users,
     db,
 )
-from CTFd.utils import config as ctf_config
-from CTFd.utils import get_config, set_config
-from CTFd.utils.csv import dump_csv, load_challenges_csv, load_teams_csv, load_users_csv
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.exports import export_ctf as export_ctf_util
-from CTFd.utils.exports import import_ctf as import_ctf_util
-from CTFd.utils.helpers import get_errors
-from CTFd.utils.security.auth import logout_user
-from CTFd.utils.uploads import delete_file
-from CTFd.utils.user import is_admin
+from utils import config as ctf_config
+from utils import get_config, set_config
+from utils.csv import dump_csv, load_challenges_csv, load_teams_csv, load_users_csv
+from utils.decorators import admins_only
+from utils.exports import export_ctf as export_ctf_util
+from utils.exports import import_ctf as import_ctf_util
+from utils.helpers import get_errors
+from utils.security.auth import logout_user
+from utils.uploads import delete_file
+from utils.user import is_admin
 
 
 @admin.route("/admin", methods=["GET"])

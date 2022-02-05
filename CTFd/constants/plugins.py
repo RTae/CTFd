@@ -1,8 +1,8 @@
 from flask import current_app
 
-from CTFd.plugins import get_admin_plugin_menu_bar, get_user_page_menu_bar
-from CTFd.utils.helpers import markup
-from CTFd.utils.plugins import get_registered_scripts, get_registered_stylesheets
+from plugins import get_admin_plugin_menu_bar, get_user_page_menu_bar
+from utils.helpers import markup
+from utils.plugins import get_registered_scripts, get_registered_stylesheets
 
 
 class _PluginWrapper:

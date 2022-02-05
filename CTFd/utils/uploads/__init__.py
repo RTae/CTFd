@@ -1,8 +1,8 @@
 import shutil
 
-from CTFd.models import ChallengeFiles, Files, PageFiles, db
-from CTFd.utils import get_app_config
-from CTFd.utils.uploads.uploaders import FilesystemUploader, S3Uploader
+from models import ChallengeFiles, Files, PageFiles, db
+from utils import get_app_config
+from utils.uploads.uploaders import FilesystemUploader, S3Uploader
 
 UPLOADERS = {"filesystem": FilesystemUploader, "s3": S3Uploader}
 

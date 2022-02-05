@@ -1,4 +1,4 @@
-from CTFd.constants import JinjaEnum, RawEnum
+from constants import JinjaEnum, RawEnum
 
 
 @JinjaEnum

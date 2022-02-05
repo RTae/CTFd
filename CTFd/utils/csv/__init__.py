@@ -2,7 +2,7 @@ import csv
 import json
 from io import BytesIO, StringIO
 
-from CTFd.models import (
+from models import (
     Flags,
     Hints,
     Tags,
@@ -13,12 +13,12 @@ from CTFd.models import (
     db,
     get_class_by_tablename,
 )
-from CTFd.plugins.challenges import get_chal_class
-from CTFd.schemas.challenges import ChallengeSchema
-from CTFd.schemas.teams import TeamSchema
-from CTFd.schemas.users import UserSchema
-from CTFd.utils.config import is_teams_mode, is_users_mode
-from CTFd.utils.scores import get_standings
+from plugins.challenges import get_chal_class
+from schemas.challenges import ChallengeSchema
+from schemas.teams import TeamSchema
+from schemas.users import UserSchema
+from utils.config import is_teams_mode, is_users_mode
+from utils.scores import get_standings
 
 
 def get_dumpable_tables():

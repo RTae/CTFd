@@ -1,5 +1,5 @@
-from CTFd.models import Flags, ma
-from CTFd.utils import string_types
+from models import Flags, ma
+from utils import string_types
 
 
 class FlagSchema(ma.ModelSchema):

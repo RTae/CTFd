@@ -7,16 +7,16 @@ from flask.helpers import safe_join
 from jinja2.exceptions import TemplateNotFound
 from sqlalchemy.exc import IntegrityError
 
-from CTFd.cache import cache
-from CTFd.constants.config import (
+from cache import cache
+from constants.config import (
     AccountVisibilityTypes,
     ChallengeVisibilityTypes,
     ConfigTypes,
     RegistrationVisibilityTypes,
     ScoreVisibilityTypes,
 )
-from CTFd.constants.themes import DEFAULT_THEME
-from CTFd.models import (
+from constants.themes import DEFAULT_THEME
+from models import (
     Admins,
     Files,
     Notifications,
@@ -26,15 +26,15 @@ from CTFd.models import (
     UserTokens,
     db,
 )
-from CTFd.utils import config, get_config, set_config
-from CTFd.utils import user as current_user
-from CTFd.utils import validators
-from CTFd.utils.config import is_setup
-from CTFd.utils.config.pages import build_markdown, get_page
-from CTFd.utils.config.visibility import challenges_visible
-from CTFd.utils.dates import ctf_ended, ctftime, view_after_ctf
-from CTFd.utils.decorators import authed_only
-from CTFd.utils.email import (
+from utils import config, get_config, set_config
+from utils import user as current_user
+from utils import validators
+from utils.config import is_setup
+from utils.config.pages import build_markdown, get_page
+from utils.config.visibility import challenges_visible
+from utils.dates import ctf_ended, ctftime, view_after_ctf
+from utils.decorators import authed_only
+from utils.email import (
     DEFAULT_PASSWORD_RESET_BODY,
     DEFAULT_PASSWORD_RESET_SUBJECT,
     DEFAULT_SUCCESSFUL_REGISTRATION_EMAIL_BODY,
@@ -44,19 +44,19 @@ from CTFd.utils.email import (
     DEFAULT_VERIFICATION_EMAIL_BODY,
     DEFAULT_VERIFICATION_EMAIL_SUBJECT,
 )
-from CTFd.utils.helpers import get_errors, get_infos, markup
-from CTFd.utils.modes import USERS_MODE
-from CTFd.utils.security.auth import login_user
-from CTFd.utils.security.csrf import generate_nonce
-from CTFd.utils.security.signing import (
+from utils.helpers import get_errors, get_infos, markup
+from utils.modes import USERS_MODE
+from utils.security.auth import login_user
+from utils.security.csrf import generate_nonce
+from utils.security.signing import (
     BadSignature,
     BadTimeSignature,
     SignatureExpired,
     serialize,
     unserialize,
 )
-from CTFd.utils.uploads import get_uploader, upload_file
-from CTFd.utils.user import authed, get_current_user, is_admin
+from utils.uploads import get_uploader, upload_file
+from utils.user import authed, get_current_user, is_admin
 
 views = Blueprint("views", __name__)
 
@@ -168,7 +168,7 @@ def setup():
     <div class="col-md-6 offset-md-3">
         <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="{default_ctf_banner_location}" />
         <h3 class="text-center">
-            <p>A cool CTF platform from <a href="https://ctfd.io">ctfd.io</a></p>
+            <p>A cool CTF platform from <a href="https://io">io</a></p>
             <p>Follow us on social media:</p>
             <a href="https://twitter.com/ctfdio"><i class="fab fa-twitter fa-2x" aria-hidden="true"></i></a>&nbsp;
             <a href="https://facebook.com/ctfdio"><i class="fab fa-facebook fa-2x" aria-hidden="true"></i></a>&nbsp;

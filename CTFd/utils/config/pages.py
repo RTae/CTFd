@@ -1,11 +1,11 @@
 from flask import current_app
 
-from CTFd.cache import cache
-from CTFd.models import Pages, db
-from CTFd.utils import get_config, markdown
-from CTFd.utils.dates import isoformat, unix_time_to_utc
-from CTFd.utils.formatters import safe_format
-from CTFd.utils.security.sanitize import sanitize_html
+from cache import cache
+from models import Pages, db
+from utils import get_config, markdown
+from utils.dates import isoformat, unix_time_to_utc
+from utils.formatters import safe_format
+from utils.security.sanitize import sanitize_html
 
 
 def format_variables(content):

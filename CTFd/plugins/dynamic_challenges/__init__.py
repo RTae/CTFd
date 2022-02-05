@@ -4,11 +4,11 @@ import math
 
 from flask import Blueprint
 
-from CTFd.models import Challenges, Solves, db
-from CTFd.plugins import register_plugin_assets_directory
-from CTFd.plugins.challenges import CHALLENGE_CLASSES, BaseChallenge
-from CTFd.plugins.migrations import upgrade
-from CTFd.utils.modes import get_model
+from models import Challenges, Solves, db
+from plugins import register_plugin_assets_directory
+from plugins.challenges import CHALLENGE_CLASSES, BaseChallenge
+from plugins.migrations import upgrade
+from utils.modes import get_model
 
 
 class DynamicChallenge(Challenges):

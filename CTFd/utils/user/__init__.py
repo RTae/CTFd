@@ -5,13 +5,13 @@ from flask import abort
 from flask import current_app as app
 from flask import redirect, request, session, url_for
 
-from CTFd.cache import cache
-from CTFd.constants.teams import TeamAttrs
-from CTFd.constants.users import UserAttrs
-from CTFd.models import Fails, Teams, Tracking, Users, db
-from CTFd.utils import get_config
-from CTFd.utils.security.auth import logout_user
-from CTFd.utils.security.signing import hmac
+from cache import cache
+from constants.teams import TeamAttrs
+from constants.users import UserAttrs
+from models import Fails, Teams, Tracking, Users, db
+from utils import get_config
+from utils.security.auth import logout_user
+from utils.security.signing import hmac
 
 
 def get_current_user():

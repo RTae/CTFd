@@ -3,12 +3,12 @@ from marshmallow.fields import Nested
 from marshmallow_sqlalchemy import field_for
 from sqlalchemy.orm import load_only
 
-from CTFd.models import TeamFieldEntries, TeamFields, Teams, Users, ma
-from CTFd.schemas.fields import TeamFieldEntriesSchema
-from CTFd.utils import get_config, string_types
-from CTFd.utils.crypto import verify_password
-from CTFd.utils.user import get_current_team, get_current_user, is_admin
-from CTFd.utils.validators import validate_country_code
+from models import TeamFieldEntries, TeamFields, Teams, Users, ma
+from schemas.fields import TeamFieldEntriesSchema
+from utils import get_config, string_types
+from utils.crypto import verify_password
+from utils.user import get_current_team, get_current_user, is_admin
+from utils.validators import validate_country_code
 
 
 class TeamSchema(ma.ModelSchema):

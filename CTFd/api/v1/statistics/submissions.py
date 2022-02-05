@@ -1,9 +1,9 @@
 from flask_restx import Resource
 from sqlalchemy import func
 
-from CTFd.api.v1.statistics import statistics_namespace
-from CTFd.models import Submissions
-from CTFd.utils.decorators import admins_only
+from api.v1.statistics import statistics_namespace
+from models import Submissions
+from utils.decorators import admins_only
 
 
 @statistics_namespace.route("/submissions/<column>")

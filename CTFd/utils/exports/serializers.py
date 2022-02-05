@@ -3,7 +3,7 @@ from collections import OrderedDict, defaultdict
 from datetime import date, datetime
 from decimal import Decimal
 
-from CTFd.utils import string_types
+from utils import string_types
 
 
 class JSONEncoder(json.JSONEncoder):

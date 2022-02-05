@@ -3,12 +3,12 @@ import os
 
 from flask import session
 
-from CTFd.cache import clear_user_session
-from CTFd.exceptions import UserNotFoundException, UserTokenExpiredException
-from CTFd.models import UserTokens, db
-from CTFd.utils.encoding import hexencode
-from CTFd.utils.security.csrf import generate_nonce
-from CTFd.utils.security.signing import hmac
+from cache import clear_user_session
+from exceptions import UserNotFoundException, UserTokenExpiredException
+from models import UserTokens, db
+from utils.encoding import hexencode
+from utils.security.csrf import generate_nonce
+from utils.security.signing import hmac
 
 
 def login_user(user):

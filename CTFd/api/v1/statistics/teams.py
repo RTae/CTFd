@@ -1,8 +1,8 @@
 from flask_restx import Resource
 
-from CTFd.api.v1.statistics import statistics_namespace
-from CTFd.models import Teams
-from CTFd.utils.decorators import admins_only
+from api.v1.statistics import statistics_namespace
+from models import Teams
+from utils.decorators import admins_only
 
 
 @statistics_namespace.route("/teams")

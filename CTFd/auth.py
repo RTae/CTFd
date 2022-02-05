@@ -6,23 +6,23 @@ from flask import current_app as app
 from flask import redirect, render_template, request, session, url_for
 from itsdangerous.exc import BadSignature, BadTimeSignature, SignatureExpired
 
-from CTFd.cache import clear_team_session, clear_user_session
-from CTFd.models import Teams, UserFieldEntries, UserFields, Users, db
-from CTFd.utils import config, email, get_app_config, get_config
-from CTFd.utils import user as current_user
-from CTFd.utils import validators
-from CTFd.utils.config import is_teams_mode
-from CTFd.utils.config.integrations import mlc_registration
-from CTFd.utils.config.visibility import registration_visible
-from CTFd.utils.crypto import verify_password
-from CTFd.utils.decorators import ratelimit
-from CTFd.utils.decorators.visibility import check_registration_visibility
-from CTFd.utils.helpers import error_for, get_errors, markup
-from CTFd.utils.logging import log
-from CTFd.utils.modes import TEAMS_MODE
-from CTFd.utils.security.auth import login_user, logout_user
-from CTFd.utils.security.signing import unserialize
-from CTFd.utils.validators import ValidationError
+from cache import clear_team_session, clear_user_session
+from models import Teams, UserFieldEntries, UserFields, Users, db
+from utils import config, email, get_app_config, get_config
+from utils import user as current_user
+from utils import validators
+from utils.config import is_teams_mode
+from utils.config.integrations import mlc_registration
+from utils.config.visibility import registration_visible
+from utils.crypto import verify_password
+from utils.decorators import ratelimit
+from utils.decorators.visibility import check_registration_visibility
+from utils.helpers import error_for, get_errors, markup
+from utils.logging import log
+from utils.modes import TEAMS_MODE
+from utils.security.auth import login_user, logout_user
+from utils.security.signing import unserialize
+from utils.validators import ValidationError
 
 auth = Blueprint("auth", __name__)
 

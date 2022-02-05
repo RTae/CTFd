@@ -5,8 +5,8 @@ from queue import Queue
 from gevent import Timeout, spawn
 from tenacity import retry, wait_exponential
 
-from CTFd.cache import cache
-from CTFd.utils import string_types
+from cache import cache
+from utils import string_types
 
 
 class ServerSentEvent(object):

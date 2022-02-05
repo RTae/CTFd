@@ -7,7 +7,7 @@ import time
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import make_url
 
-from CTFd.config import Config
+from config import Config
 
 url = make_url(Config.DATABASE_URL)
 

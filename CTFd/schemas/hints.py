@@ -1,5 +1,5 @@
-from CTFd.models import Hints, ma
-from CTFd.utils import string_types
+from models import Hints, ma
+from utils import string_types
 
 
 class HintSchema(ma.ModelSchema):

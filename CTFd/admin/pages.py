@@ -1,10 +1,10 @@
 from flask import render_template, request
 
-from CTFd.admin import admin
-from CTFd.models import Pages
-from CTFd.schemas.pages import PageSchema
-from CTFd.utils import markdown
-from CTFd.utils.decorators import admins_only
+from admin import admin
+from models import Pages
+from schemas.pages import PageSchema
+from utils import markdown
+from utils.decorators import admins_only
 
 
 @admin.route("/admin/pages")

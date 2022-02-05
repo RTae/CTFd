@@ -1,7 +1,7 @@
 from flask import Blueprint, Response, current_app, stream_with_context
 
-from CTFd.utils import get_app_config
-from CTFd.utils.decorators import authed_only, ratelimit
+from utils import get_app_config
+from utils.decorators import authed_only, ratelimit
 
 events = Blueprint("events", __name__)
 

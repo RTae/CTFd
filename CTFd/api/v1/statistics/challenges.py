@@ -2,10 +2,10 @@ from flask_restx import Resource
 from sqlalchemy import func
 from sqlalchemy.sql import and_
 
-from CTFd.api.v1.statistics import statistics_namespace
-from CTFd.models import Challenges, Solves, db
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.modes import get_model
+from api.v1.statistics import statistics_namespace
+from models import Challenges, Solves, db
+from utils.decorators import admins_only
+from utils.modes import get_model
 
 
 @statistics_namespace.route("/challenges/<column>")

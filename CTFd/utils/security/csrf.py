@@ -1,6 +1,6 @@
 import os
 
-from CTFd.utils.encoding import hexencode
+from utils.encoding import hexencode
 
 
 def generate_nonce():

@@ -1,14 +1,14 @@
 from flask import Blueprint, render_template, request, url_for
 
-from CTFd.models import Users
-from CTFd.utils import config
-from CTFd.utils.decorators import authed_only
-from CTFd.utils.decorators.visibility import (
+from models import Users
+from utils import config
+from utils.decorators import authed_only
+from utils.decorators.visibility import (
     check_account_visibility,
     check_score_visibility,
 )
-from CTFd.utils.helpers import get_errors, get_infos
-from CTFd.utils.user import get_current_user
+from utils.helpers import get_errors, get_infos
+from utils.user import get_current_user
 
 users = Blueprint("users", __name__)
 

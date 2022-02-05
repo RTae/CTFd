@@ -1,29 +1,29 @@
 from flask import Blueprint, current_app
 from flask_restx import Api
 
-from CTFd.api.v1.awards import awards_namespace
-from CTFd.api.v1.challenges import challenges_namespace
-from CTFd.api.v1.comments import comments_namespace
-from CTFd.api.v1.config import configs_namespace
-from CTFd.api.v1.files import files_namespace
-from CTFd.api.v1.flags import flags_namespace
-from CTFd.api.v1.hints import hints_namespace
-from CTFd.api.v1.notifications import notifications_namespace
-from CTFd.api.v1.pages import pages_namespace
-from CTFd.api.v1.schemas import (
+from api.v1.awards import awards_namespace
+from api.v1.challenges import challenges_namespace
+from api.v1.comments import comments_namespace
+from api.v1.config import configs_namespace
+from api.v1.files import files_namespace
+from api.v1.flags import flags_namespace
+from api.v1.hints import hints_namespace
+from api.v1.notifications import notifications_namespace
+from api.v1.pages import pages_namespace
+from api.v1.schemas import (
     APIDetailedSuccessResponse,
     APISimpleErrorResponse,
     APISimpleSuccessResponse,
 )
-from CTFd.api.v1.scoreboard import scoreboard_namespace
-from CTFd.api.v1.statistics import statistics_namespace
-from CTFd.api.v1.submissions import submissions_namespace
-from CTFd.api.v1.tags import tags_namespace
-from CTFd.api.v1.teams import teams_namespace
-from CTFd.api.v1.tokens import tokens_namespace
-from CTFd.api.v1.topics import topics_namespace
-from CTFd.api.v1.unlocks import unlocks_namespace
-from CTFd.api.v1.users import users_namespace
+from api.v1.scoreboard import scoreboard_namespace
+from api.v1.statistics import statistics_namespace
+from api.v1.submissions import submissions_namespace
+from api.v1.tags import tags_namespace
+from api.v1.teams import teams_namespace
+from api.v1.tokens import tokens_namespace
+from api.v1.topics import topics_namespace
+from api.v1.unlocks import unlocks_namespace
+from api.v1.users import users_namespace
 
 api = Blueprint("api", __name__, url_prefix="/api/v1")
 CTFd_API_v1 = Api(

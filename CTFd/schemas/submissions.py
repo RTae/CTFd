@@ -1,10 +1,10 @@
 from marshmallow import fields
 
-from CTFd.models import Submissions, ma
-from CTFd.schemas.challenges import ChallengeSchema
-from CTFd.schemas.teams import TeamSchema
-from CTFd.schemas.users import UserSchema
-from CTFd.utils import string_types
+from models import Submissions, ma
+from schemas.challenges import ChallengeSchema
+from schemas.teams import TeamSchema
+from schemas.users import UserSchema
+from utils import string_types
 
 
 class SubmissionSchema(ma.ModelSchema):

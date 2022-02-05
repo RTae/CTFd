@@ -3,13 +3,13 @@ from marshmallow.fields import Nested
 from marshmallow_sqlalchemy import field_for
 from sqlalchemy.orm import load_only
 
-from CTFd.models import UserFieldEntries, UserFields, Users, ma
-from CTFd.schemas.fields import UserFieldEntriesSchema
-from CTFd.utils import get_config, string_types
-from CTFd.utils.crypto import verify_password
-from CTFd.utils.email import check_email_is_whitelisted
-from CTFd.utils.user import get_current_user, is_admin
-from CTFd.utils.validators import validate_country_code
+from models import UserFieldEntries, UserFields, Users, ma
+from schemas.fields import UserFieldEntriesSchema
+from utils import get_config, string_types
+from utils.crypto import verify_password
+from utils.email import check_email_is_whitelisted
+from utils.user import get_current_user, is_admin
+from utils.validators import validate_country_code
 
 
 class UserSchema(ma.ModelSchema):

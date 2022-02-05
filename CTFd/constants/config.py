@@ -2,8 +2,8 @@ import json
 
 from flask import url_for
 
-from CTFd.constants import JinjaEnum, RawEnum
-from CTFd.utils import get_config
+from constants import JinjaEnum, RawEnum
+from utils import get_config
 
 
 class ConfigTypes(str, RawEnum):
@@ -64,13 +64,13 @@ class _ConfigsWrapper:
 
     @property
     def theme_header(self):
-        from CTFd.utils.helpers import markup
+        from utils.helpers import markup
 
         return markup(get_config("theme_header", default=""))
 
     @property
     def theme_footer(self):
-        from CTFd.utils.helpers import markup
+        from utils.helpers import markup
 
         return markup(get_config("theme_footer", default=""))
 

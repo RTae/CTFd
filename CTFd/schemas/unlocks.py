@@ -1,5 +1,5 @@
-from CTFd.models import Unlocks, ma
-from CTFd.utils import string_types
+from models import Unlocks, ma
+from utils import string_types
 
 
 class UnlockSchema(ma.ModelSchema):

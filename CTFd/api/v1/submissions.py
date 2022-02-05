@@ -2,18 +2,18 @@ from typing import List
 
 from flask_restx import Namespace, Resource
 
-from CTFd.api.v1.helpers.request import validate_args
-from CTFd.api.v1.helpers.schemas import sqlalchemy_to_pydantic
-from CTFd.api.v1.schemas import (
+from api.v1.helpers.request import validate_args
+from api.v1.helpers.schemas import sqlalchemy_to_pydantic
+from api.v1.schemas import (
     APIDetailedSuccessResponse,
     PaginatedAPIListSuccessResponse,
 )
-from CTFd.cache import clear_standings
-from CTFd.constants import RawEnum
-from CTFd.models import Submissions, db
-from CTFd.schemas.submissions import SubmissionSchema
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.helpers.models import build_model_filters
+from cache import clear_standings
+from constants import RawEnum
+from models import Submissions, db
+from schemas.submissions import SubmissionSchema
+from utils.decorators import admins_only
+from utils.helpers.models import build_model_filters
 
 submissions_namespace = Namespace(
     "submissions", description="Endpoint to retrieve Submission"

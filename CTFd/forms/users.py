@@ -2,11 +2,11 @@ from wtforms import BooleanField, PasswordField, SelectField, StringField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import InputRequired
 
-from CTFd.constants.config import Configs
-from CTFd.forms import BaseForm
-from CTFd.forms.fields import SubmitField
-from CTFd.models import UserFieldEntries, UserFields
-from CTFd.utils.countries import SELECT_COUNTRIES_LIST
+from constants.config import Configs
+from forms import BaseForm
+from forms.fields import SubmitField
+from models import UserFieldEntries, UserFields
+from utils.countries import SELECT_COUNTRIES_LIST
 
 
 def build_custom_user_fields(

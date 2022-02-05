@@ -6,42 +6,42 @@ from flask_restx import Namespace, Resource
 from sqlalchemy import func as sa_func
 from sqlalchemy.sql import and_, false, true
 
-from CTFd.api.v1.helpers.request import validate_args
-from CTFd.api.v1.helpers.schemas import sqlalchemy_to_pydantic
-from CTFd.api.v1.schemas import APIDetailedSuccessResponse, APIListSuccessResponse
-from CTFd.cache import clear_standings
-from CTFd.constants import RawEnum
-from CTFd.models import ChallengeFiles as ChallengeFilesModel
-from CTFd.models import Challenges
-from CTFd.models import ChallengeTopics as ChallengeTopicsModel
-from CTFd.models import Fails, Flags, Hints, HintUnlocks, Solves, Submissions, Tags, db
-from CTFd.plugins.challenges import CHALLENGE_CLASSES, get_chal_class
-from CTFd.schemas.challenges import ChallengeSchema
-from CTFd.schemas.flags import FlagSchema
-from CTFd.schemas.hints import HintSchema
-from CTFd.schemas.tags import TagSchema
-from CTFd.utils import config, get_config
-from CTFd.utils import user as current_user
-from CTFd.utils.config.visibility import (
+from api.v1.helpers.request import validate_args
+from api.v1.helpers.schemas import sqlalchemy_to_pydantic
+from api.v1.schemas import APIDetailedSuccessResponse, APIListSuccessResponse
+from cache import clear_standings
+from constants import RawEnum
+from models import ChallengeFiles as ChallengeFilesModel
+from models import Challenges
+from models import ChallengeTopics as ChallengeTopicsModel
+from models import Fails, Flags, Hints, HintUnlocks, Solves, Submissions, Tags, db
+from plugins.challenges import CHALLENGE_CLASSES, get_chal_class
+from schemas.challenges import ChallengeSchema
+from schemas.flags import FlagSchema
+from schemas.hints import HintSchema
+from schemas.tags import TagSchema
+from utils import config, get_config
+from utils import user as current_user
+from utils.config.visibility import (
     accounts_visible,
     challenges_visible,
     scores_visible,
 )
-from CTFd.utils.dates import ctf_ended, ctf_paused, ctftime, isoformat, unix_time_to_utc
-from CTFd.utils.decorators import (
+from utils.dates import ctf_ended, ctf_paused, ctftime, isoformat, unix_time_to_utc
+from utils.decorators import (
     admins_only,
     during_ctf_time_only,
     require_verified_emails,
 )
-from CTFd.utils.decorators.visibility import (
+from utils.decorators.visibility import (
     check_challenge_visibility,
     check_score_visibility,
 )
-from CTFd.utils.helpers.models import build_model_filters
-from CTFd.utils.logging import log
-from CTFd.utils.modes import generate_account_url, get_model
-from CTFd.utils.security.signing import serialize
-from CTFd.utils.user import (
+from utils.helpers.models import build_model_filters
+from utils.logging import log
+from utils.modes import generate_account_url, get_model
+from utils.security.signing import serialize
+from utils.user import (
     authed,
     get_current_team,
     get_current_team_attrs,

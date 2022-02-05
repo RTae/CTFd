@@ -1,10 +1,10 @@
 from flask import render_template, request, url_for
 
-from CTFd.admin import admin
-from CTFd.models import Challenges, Submissions
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.helpers.models import build_model_filters
-from CTFd.utils.modes import get_model
+from admin import admin
+from models import Challenges, Submissions
+from utils.decorators import admins_only
+from utils.helpers.models import build_model_filters
+from utils.modes import get_model
 
 
 @admin.route("/admin/submissions", defaults={"submission_type": None})

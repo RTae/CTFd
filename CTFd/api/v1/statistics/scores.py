@@ -2,10 +2,10 @@ from collections import defaultdict
 
 from flask_restx import Resource
 
-from CTFd.api.v1.statistics import statistics_namespace
-from CTFd.models import Challenges, db
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.scores import get_standings
+from api.v1.statistics import statistics_namespace
+from models import Challenges, db
+from utils.decorators import admins_only
+from utils.scores import get_standings
 
 
 @statistics_namespace.route("/scores/distribution")

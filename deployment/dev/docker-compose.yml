@@ -1,0 +1,30 @@
+version: '3.8'
+networks:
+  cpe_ctfd_dev_net:
+    driver: bridge
+
+services:
+  ## Persistence layer
+  # Database
+  database:
+    extends:
+      file: database/docker-compose.yml
+      service: database
+    restart: always
+  
+  cache:
+    extends:
+      file: cache/docker-compose.yml
+      service: cache
+    restart: always
+
+  proxy:
+    extends:
+      file: proxy/docker-compose.yml
+      service: proxy
+    restart: always
+
+  frontend:
+    extends:
+      file: frontend/docker-compose.yml
+      service: frontend

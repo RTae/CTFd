@@ -1,8 +1,8 @@
 from marshmallow import pre_load, validate
 from marshmallow_sqlalchemy import field_for
 
-from CTFd.models import Pages, ma
-from CTFd.utils import string_types
+from models import Pages, ma
+from utils import string_types
 
 
 class PageSchema(ma.ModelSchema):

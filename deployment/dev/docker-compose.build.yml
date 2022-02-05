@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  ## Service Layer
+  frontend:
+    extends:
+      file: frontend/docker-compose.build.yml
+      service: frontend

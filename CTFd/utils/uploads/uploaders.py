@@ -10,8 +10,8 @@ from flask import current_app, redirect, send_file
 from flask.helpers import safe_join
 from werkzeug.utils import secure_filename
 
-from CTFd.utils import get_app_config
-from CTFd.utils.encoding import hexencode
+from utils import get_app_config
+from utils.encoding import hexencode
 
 
 class BaseUploader(object):

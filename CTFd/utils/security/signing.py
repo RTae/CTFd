@@ -10,7 +10,7 @@ from itsdangerous.exc import (  # noqa: F401
 )
 from itsdangerous.url_safe import URLSafeTimedSerializer
 
-from CTFd.utils import string_types
+from utils import string_types
 
 
 def serialize(data, secret=None):

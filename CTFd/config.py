@@ -84,7 +84,7 @@ class ServerConfig(object):
         or gen_secret_key()
 
     DATABASE_URL: str = empty_str_cast(config_ini["server"]["DATABASE_URL"]) \
-        or f"sqlite:///{os.path.dirname(os.path.abspath(__file__))}/ctfd.db"
+        or f"sqlite:///{os.path.dirname(os.path.abspath(__file__))}/db"
 
     REDIS_URL: str = empty_str_cast(config_ini["server"]["REDIS_URL"])
 

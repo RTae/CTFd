@@ -13,21 +13,21 @@ from jinja2.sandbox import SandboxedEnvironment
 from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.utils import cached_property
 
-import CTFd.utils.config
+import utils.config
 from CTFd import utils
-from CTFd.constants.themes import ADMIN_THEME, DEFAULT_THEME
-from CTFd.plugins import init_plugins
-from CTFd.utils.crypto import sha256
-from CTFd.utils.initialization import (
+from constants.themes import ADMIN_THEME, DEFAULT_THEME
+from plugins import init_plugins
+from utils.crypto import sha256
+from utils.initialization import (
     init_events,
     init_logs,
     init_request_processors,
     init_template_filters,
     init_template_globals,
 )
-from CTFd.utils.migrations import create_database, migrations, stamp_latest_revision
-from CTFd.utils.sessions import CachingSessionInterface
-from CTFd.utils.updates import update_check
+from utils.migrations import create_database, migrations, stamp_latest_revision
+from utils.sessions import CachingSessionInterface
+from utils.updates import update_check
 
 __version__ = "3.4.0"
 __channel__ = "oss"
@@ -150,7 +150,7 @@ def run_upgrade():
     utils.set_config("ctf_version", __version__)
 
 
-def create_app(config="CTFd.config.Config"):
+def create_app(config="config.Config"):
     app = CTFdFlask(__name__)
     with app.app_context():
         app.config.from_object(config)
@@ -168,7 +168,7 @@ def create_app(config="CTFd.config.Config"):
             loaders.append(ThemeLoader(theme_name=DEFAULT_THEME))
         # All themes including admin can be accessed by prefixing their name
         prefix_loader_dict = {ADMIN_THEME: ThemeLoader(theme_name=ADMIN_THEME)}
-        for theme_name in CTFd.utils.config.get_themes():
+        for theme_name in utils.config.get_themes():
             prefix_loader_dict[theme_name] = ThemeLoader(theme_name=theme_name)
         loaders.append(jinja2.PrefixLoader(prefix_loader_dict))
         # Plugin templates are also accessed via prefix but we just point a
@@ -184,7 +184,7 @@ def create_app(config="CTFd.config.Config"):
         # Use a choice loader to find the first match from our list of loaders
         app.jinja_loader = jinja2.ChoiceLoader(loaders)
 
-        from CTFd.models import (  # noqa: F401
+        from models import (  # noqa: F401
             db,
             Teams,
             Solves,
@@ -230,7 +230,7 @@ def create_app(config="CTFd.config.Config"):
             # Allows migrations to happen properly
             upgrade()
 
-        from CTFd.models import ma
+        from models import ma
 
         ma.init_app(app)
 
@@ -238,7 +238,7 @@ def create_app(config="CTFd.config.Config"):
         app.VERSION = __version__
         app.CHANNEL = __channel__
 
-        from CTFd.cache import cache
+        from cache import cache
 
         cache.init_app(app)
         app.cache = cache
@@ -275,16 +275,16 @@ def create_app(config="CTFd.config.Config"):
         init_template_globals(app)
 
         # Importing here allows tests to use sensible names (e.g. api instead of api_bp)
-        from CTFd.views import views
-        from CTFd.teams import teams
-        from CTFd.users import users
-        from CTFd.challenges import challenges
-        from CTFd.scoreboard import scoreboard
-        from CTFd.auth import auth
-        from CTFd.admin import admin
-        from CTFd.api import api
-        from CTFd.events import events
-        from CTFd.errors import render_error
+        from views import views
+        from teams import teams
+        from users import users
+        from challenges import challenges
+        from scoreboard import scoreboard
+        from auth import auth
+        from admin import admin
+        from api import api
+        from events import events
+        from errors import render_error
 
         app.register_blueprint(views)
         app.register_blueprint(teams)

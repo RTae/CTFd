@@ -1,8 +1,8 @@
 from flask import render_template
 
-from CTFd.admin import admin
-from CTFd.models import Notifications
-from CTFd.utils.decorators import admins_only
+from admin import admin
+from models import Notifications
+from utils.decorators import admins_only
 
 
 @admin.route("/admin/notifications")

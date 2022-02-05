@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import column_property, validates
 
-from CTFd.cache import cache
+from cache import cache
 
 db = SQLAlchemy()
 ma = Marshmallow()
@@ -39,8 +39,8 @@ class Notifications(db.Model):
 
     @property
     def html(self):
-        from CTFd.utils.config.pages import build_markdown
-        from CTFd.utils.helpers import markup
+        from utils.config.pages import build_markdown
+        from utils.helpers import markup
 
         return markup(build_markdown(self.content))
 
@@ -64,7 +64,7 @@ class Pages(db.Model):
 
     @property
     def html(self):
-        from CTFd.utils.config.pages import build_html, build_markdown
+        from utils.config.pages import build_html, build_markdown
 
         if self.format == "markdown":
             return build_markdown(self.content)
@@ -119,14 +119,14 @@ class Challenges(db.Model):
 
     @property
     def html(self):
-        from CTFd.utils.config.pages import build_markdown
-        from CTFd.utils.helpers import markup
+        from utils.config.pages import build_markdown
+        from utils.helpers import markup
 
         return markup(build_markdown(self.description))
 
     @property
     def plugin_class(self):
-        from CTFd.plugins.challenges import get_chal_class
+        from plugins.challenges import get_chal_class
 
         return get_chal_class(self.type)
 
@@ -164,8 +164,8 @@ class Hints(db.Model):
 
     @property
     def html(self):
-        from CTFd.utils.config.pages import build_markdown
-        from CTFd.utils.helpers import markup
+        from utils.config.pages import build_markdown
+        from utils.helpers import markup
 
         return markup(build_markdown(self.content))
 
@@ -197,7 +197,7 @@ class Awards(db.Model):
 
     @hybrid_property
     def account_id(self):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         user_mode = get_config("user_mode")
         if user_mode == "teams":
@@ -341,13 +341,13 @@ class Users(db.Model):
 
     @validates("password")
     def validate_password(self, key, plaintext):
-        from CTFd.utils.crypto import hash_password
+        from utils.crypto import hash_password
 
         return hash_password(str(plaintext))
 
     @hybrid_property
     def account_id(self):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         user_mode = get_config("user_mode")
         if user_mode == "teams":
@@ -357,7 +357,7 @@ class Users(db.Model):
 
     @hybrid_property
     def account(self):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         user_mode = get_config("user_mode")
         if user_mode == "teams":
@@ -387,7 +387,7 @@ class Users(db.Model):
 
     @property
     def place(self):
-        from CTFd.utils.config.visibility import scores_visible
+        from utils.config.visibility import scores_visible
 
         if scores_visible():
             return self.get_place(admin=False)
@@ -419,7 +419,7 @@ class Users(db.Model):
         ]
 
     def get_solves(self, admin=False):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         solves = Solves.query.filter_by(user_id=self.id)
         freeze = get_config("freeze")
@@ -429,7 +429,7 @@ class Users(db.Model):
         return solves.all()
 
     def get_fails(self, admin=False):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         fails = Fails.query.filter_by(user_id=self.id)
         freeze = get_config("freeze")
@@ -439,7 +439,7 @@ class Users(db.Model):
         return fails.all()
 
     def get_awards(self, admin=False):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         awards = Awards.query.filter_by(user_id=self.id)
         freeze = get_config("freeze")
@@ -484,13 +484,13 @@ class Users(db.Model):
     @cache.memoize()
     def get_place(self, admin=False, numeric=False):
         """
-        This method is generally a clone of CTFd.scoreboard.get_standings.
+        This method is generally a clone of scoreboard.get_standings.
         The point being that models.py must be self-reliant and have little
         to no imports within the CTFd application as importing from the
         application itself will result in a circular import.
         """
-        from CTFd.utils.scores import get_user_standings
-        from CTFd.utils.humanize.numbers import ordinalize
+        from utils.scores import get_user_standings
+        from utils.humanize.numbers import ordinalize
 
         standings = get_user_standings(admin=admin)
 
@@ -548,7 +548,7 @@ class Teams(db.Model):
 
     @validates("password")
     def validate_password(self, key, plaintext):
-        from CTFd.utils.crypto import hash_password
+        from utils.crypto import hash_password
 
         return hash_password(str(plaintext))
 
@@ -574,7 +574,7 @@ class Teams(db.Model):
 
     @property
     def place(self):
-        from CTFd.utils.config.visibility import scores_visible
+        from utils.config.visibility import scores_visible
 
         if scores_visible():
             return self.get_place(admin=False)
@@ -607,7 +607,7 @@ class Teams(db.Model):
 
     def get_invite_code(self):
         from flask import current_app
-        from CTFd.utils.security.signing import serialize, hmac
+        from utils.security.signing import serialize, hmac
 
         secret_key = current_app.config["SECRET_KEY"]
         if isinstance(secret_key, str):
@@ -626,13 +626,13 @@ class Teams(db.Model):
     @classmethod
     def load_invite_code(cls, code):
         from flask import current_app
-        from CTFd.utils.security.signing import (
+        from utils.security.signing import (
             unserialize,
             hmac,
             BadTimeSignature,
             BadSignature,
         )
-        from CTFd.exceptions import TeamTokenExpiredException, TeamTokenInvalidException
+        from exceptions import TeamTokenExpiredException, TeamTokenInvalidException
 
         secret_key = current_app.config["SECRET_KEY"]
         if isinstance(secret_key, str):
@@ -662,7 +662,7 @@ class Teams(db.Model):
         return team
 
     def get_solves(self, admin=False):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         member_ids = [member.id for member in self.members]
 
@@ -678,7 +678,7 @@ class Teams(db.Model):
         return solves.all()
 
     def get_fails(self, admin=False):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         member_ids = [member.id for member in self.members]
 
@@ -694,7 +694,7 @@ class Teams(db.Model):
         return fails.all()
 
     def get_awards(self, admin=False):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         member_ids = [member.id for member in self.members]
 
@@ -719,13 +719,13 @@ class Teams(db.Model):
     @cache.memoize()
     def get_place(self, admin=False, numeric=False):
         """
-        This method is generally a clone of CTFd.scoreboard.get_standings.
+        This method is generally a clone of scoreboard.get_standings.
         The point being that models.py must be self-reliant and have little
         to no imports within the CTFd application as importing from the
         application itself will result in a circular import.
         """
-        from CTFd.utils.scores import get_team_standings
-        from CTFd.utils.humanize.numbers import ordinalize
+        from utils.scores import get_team_standings
+        from utils.humanize.numbers import ordinalize
 
         standings = get_team_standings(admin=admin)
 
@@ -763,7 +763,7 @@ class Submissions(db.Model):
 
     @hybrid_property
     def account_id(self):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         user_mode = get_config("user_mode")
         if user_mode == "teams":
@@ -773,7 +773,7 @@ class Submissions(db.Model):
 
     @hybrid_property
     def account(self):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         user_mode = get_config("user_mode")
         if user_mode == "teams":
@@ -842,7 +842,7 @@ class Unlocks(db.Model):
 
     @hybrid_property
     def account_id(self):
-        from CTFd.utils import get_config
+        from utils import get_config
 
         user_mode = get_config("user_mode")
         if user_mode == "teams":
@@ -925,8 +925,8 @@ class Comments(db.Model):
 
     @property
     def html(self):
-        from CTFd.utils.config.pages import build_markdown
-        from CTFd.utils.helpers import markup
+        from utils.config.pages import build_markdown
+        from utils.helpers import markup
 
         return markup(build_markdown(self.content, sanitize=True))
 

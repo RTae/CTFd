@@ -4,26 +4,26 @@ from typing import List
 from flask import abort, request, session
 from flask_restx import Namespace, Resource
 
-from CTFd.api.v1.helpers.request import validate_args
-from CTFd.api.v1.helpers.schemas import sqlalchemy_to_pydantic
-from CTFd.api.v1.schemas import (
+from api.v1.helpers.request import validate_args
+from api.v1.helpers.schemas import sqlalchemy_to_pydantic
+from api.v1.schemas import (
     APIDetailedSuccessResponse,
     PaginatedAPIListSuccessResponse,
 )
-from CTFd.cache import clear_standings, clear_team_session, clear_user_session
-from CTFd.constants import RawEnum
-from CTFd.models import Awards, Submissions, Teams, Unlocks, Users, db
-from CTFd.schemas.awards import AwardSchema
-from CTFd.schemas.submissions import SubmissionSchema
-from CTFd.schemas.teams import TeamSchema
-from CTFd.utils import get_config
-from CTFd.utils.decorators import admins_only, authed_only, require_team
-from CTFd.utils.decorators.visibility import (
+from cache import clear_standings, clear_team_session, clear_user_session
+from constants import RawEnum
+from models import Awards, Submissions, Teams, Unlocks, Users, db
+from schemas.awards import AwardSchema
+from schemas.submissions import SubmissionSchema
+from schemas.teams import TeamSchema
+from utils import get_config
+from utils.decorators import admins_only, authed_only, require_team
+from utils.decorators.visibility import (
     check_account_visibility,
     check_score_visibility,
 )
-from CTFd.utils.helpers.models import build_model_filters
-from CTFd.utils.user import get_current_team, get_current_user_type, is_admin
+from utils.helpers.models import build_model_filters
+from utils.user import get_current_team, get_current_user_type, is_admin
 
 teams_namespace = Namespace("teams", description="Endpoint to retrieve Teams")
 

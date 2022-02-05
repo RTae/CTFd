@@ -1,7 +1,7 @@
 from marshmallow import fields
 
-from CTFd.models import Comments, ma
-from CTFd.schemas.users import UserSchema
+from models import Comments, ma
+from schemas.users import UserSchema
 
 
 class CommentSchema(ma.ModelSchema):

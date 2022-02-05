@@ -1,19 +1,19 @@
 from flask import Blueprint, abort, redirect, render_template, request, url_for
 
-from CTFd.cache import clear_team_session, clear_user_session
-from CTFd.exceptions import TeamTokenExpiredException, TeamTokenInvalidException
-from CTFd.models import TeamFieldEntries, TeamFields, Teams, db
-from CTFd.utils import config, get_config, validators
-from CTFd.utils.crypto import verify_password
-from CTFd.utils.decorators import authed_only, ratelimit, registered_only
-from CTFd.utils.decorators.modes import require_team_mode
-from CTFd.utils.decorators.visibility import (
+from cache import clear_team_session, clear_user_session
+from exceptions import TeamTokenExpiredException, TeamTokenInvalidException
+from models import TeamFieldEntries, TeamFields, Teams, db
+from utils import config, get_config, validators
+from utils.crypto import verify_password
+from utils.decorators import authed_only, ratelimit, registered_only
+from utils.decorators.modes import require_team_mode
+from utils.decorators.visibility import (
     check_account_visibility,
     check_score_visibility,
 )
-from CTFd.utils.helpers import get_errors, get_infos
-from CTFd.utils.humanize.words import pluralize
-from CTFd.utils.user import get_current_user, get_current_user_attrs
+from utils.helpers import get_errors, get_infos
+from utils.humanize.words import pluralize
+from utils.user import get_current_user, get_current_user_attrs
 
 teams = Blueprint("teams", __name__)
 

@@ -3,11 +3,11 @@ from typing import List
 from flask import request, session
 from flask_restx import Namespace, Resource
 
-from CTFd.api.v1.helpers.request import validate_args
-from CTFd.api.v1.helpers.schemas import sqlalchemy_to_pydantic
-from CTFd.api.v1.schemas import APIDetailedSuccessResponse, APIListSuccessResponse
-from CTFd.constants import RawEnum
-from CTFd.models import (
+from api.v1.helpers.request import validate_args
+from api.v1.helpers.schemas import sqlalchemy_to_pydantic
+from api.v1.schemas import APIDetailedSuccessResponse, APIListSuccessResponse
+from constants import RawEnum
+from models import (
     ChallengeComments,
     Comments,
     PageComments,
@@ -15,9 +15,9 @@ from CTFd.models import (
     UserComments,
     db,
 )
-from CTFd.schemas.comments import CommentSchema
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.helpers.models import build_model_filters
+from schemas.comments import CommentSchema
+from utils.decorators import admins_only
+from utils.helpers.models import build_model_filters
 
 comments_namespace = Namespace("comments", description="Endpoint to retrieve Comments")
 

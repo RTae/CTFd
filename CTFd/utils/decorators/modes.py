@@ -2,8 +2,8 @@ import functools
 
 from flask import abort
 
-from CTFd.utils import get_config
-from CTFd.utils.modes import TEAMS_MODE, USERS_MODE
+from utils import get_config
+from utils.modes import TEAMS_MODE, USERS_MODE
 
 
 def require_team_mode(f):

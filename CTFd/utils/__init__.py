@@ -4,8 +4,8 @@ import cmarkgfm
 from flask import current_app as app
 
 # isort:imports-firstparty
-from CTFd.cache import cache
-from CTFd.models import Configs, db
+from cache import cache
+from models import Configs, db
 
 string_types = (str,)
 text_type = str

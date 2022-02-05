@@ -7,11 +7,11 @@ from flask import abort, redirect, render_template, request, session, url_for
 from sqlalchemy.exc import IntegrityError, InvalidRequestError
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from CTFd.cache import clear_user_recent_ips
-from CTFd.exceptions import UserNotFoundException, UserTokenExpiredException
-from CTFd.models import Tracking, db
-from CTFd.utils import config, get_config, markdown
-from CTFd.utils.config import (
+from cache import clear_user_recent_ips
+from exceptions import UserNotFoundException, UserTokenExpiredException
+from models import Tracking, db
+from utils import config, get_config, markdown
+from utils.config import (
     can_send_mail,
     ctf_logo,
     ctf_name,
@@ -19,21 +19,21 @@ from CTFd.utils.config import (
     integrations,
     is_setup,
 )
-from CTFd.utils.config.pages import get_pages
-from CTFd.utils.dates import isoformat, unix_time, unix_time_millis
-from CTFd.utils.events import EventManager, RedisEventManager
-from CTFd.utils.humanize.words import pluralize
-from CTFd.utils.modes import generate_account_url, get_mode_as_word
-from CTFd.utils.plugins import (
+from utils.config.pages import get_pages
+from utils.dates import isoformat, unix_time, unix_time_millis
+from utils.events import EventManager, RedisEventManager
+from utils.humanize.words import pluralize
+from utils.modes import generate_account_url, get_mode_as_word
+from utils.plugins import (
     get_configurable_plugins,
     get_registered_admin_scripts,
     get_registered_admin_stylesheets,
     get_registered_scripts,
     get_registered_stylesheets,
 )
-from CTFd.utils.security.auth import login_user, logout_user, lookup_user_token
-from CTFd.utils.security.csrf import generate_nonce
-from CTFd.utils.user import (
+from utils.security.auth import login_user, logout_user, lookup_user_token
+from utils.security.csrf import generate_nonce
+from utils.user import (
     authed,
     get_current_team_attrs,
     get_current_user_attrs,
@@ -52,22 +52,22 @@ def init_template_filters(app):
 
 
 def init_template_globals(app):
-    from CTFd.constants import JINJA_ENUMS
-    from CTFd.constants.config import Configs
-    from CTFd.constants.plugins import Plugins
-    from CTFd.constants.sessions import Session
-    from CTFd.constants.static import Static
-    from CTFd.constants.users import User
-    from CTFd.constants.teams import Team
-    from CTFd.forms import Forms
-    from CTFd.utils.config.visibility import (
+    from constants import JINJA_ENUMS
+    from constants.config import Configs
+    from constants.plugins import Plugins
+    from constants.sessions import Session
+    from constants.static import Static
+    from constants.users import User
+    from constants.teams import Team
+    from forms import Forms
+    from utils.config.visibility import (
         accounts_visible,
         challenges_visible,
         registration_visible,
         scores_visible,
     )
-    from CTFd.utils.countries import get_countries, lookup_country_code
-    from CTFd.utils.countries.geoip import lookup_ip_address, lookup_ip_address_city
+    from utils.countries import get_countries, lookup_country_code
+    from utils.countries.geoip import lookup_ip_address, lookup_ip_address_city
 
     app.jinja_env.globals.update(config=config)
     app.jinja_env.globals.update(get_pages=get_pages)

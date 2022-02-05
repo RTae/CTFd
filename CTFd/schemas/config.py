@@ -2,8 +2,8 @@ from marshmallow import fields
 from marshmallow.exceptions import ValidationError
 from marshmallow_sqlalchemy import field_for
 
-from CTFd.models import Configs, ma
-from CTFd.utils import string_types
+from models import Configs, ma
+from utils import string_types
 
 
 class ConfigValueField(fields.Field):

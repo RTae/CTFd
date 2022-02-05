@@ -6,15 +6,15 @@ from platform import python_version
 import requests
 from flask import current_app as app
 
-from CTFd.models import Challenges, Teams, Users, db
-from CTFd.utils import get_app_config, get_config, set_config
-from CTFd.utils.config import is_setup
-from CTFd.utils.crypto import sha256
+from models import Challenges, Teams, Users, db
+from utils import get_app_config, get_config, set_config
+from utils.config import is_setup
+from utils.crypto import sha256
 
 
 def update_check(force=False):
     """
-    Makes a request to ctfd.io to check if there is a new version of CTFd available. The service is provided in return
+    Makes a request to io to check if there is a new version of CTFd available. The service is provided in return
     for users opting in to anonymous usage data collection. Users can opt-out of update checks by specifying
     UPDATE_CHECK = False in config.py
 
@@ -53,7 +53,7 @@ def update_check(force=False):
                 "channel": app.CHANNEL,
             }
             check = requests.get(
-                "https://versioning.ctfd.io/check", params=params, timeout=3
+                "https://versioning.io/check", params=params, timeout=3
             ).json()
         except requests.exceptions.RequestException:
             pass

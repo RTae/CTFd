@@ -1,0 +1,21 @@
+version: '3.8'
+networks:
+  cpe_ctfd_dev_net:
+    driver: bridge
+
+services:
+  database:
+    container_name: database.$PREFIX
+    image: mariadb:10.7.1
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --wait_timeout=28800, --log-warnings=0]
+    environment:
+      - MYSQL_USER=$DB_USER
+      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$DB_DATABASE
+    ports:
+      - 3808:3808
+    volumes:
+      - ~/cpe-ctfd-persistance-data/mysql:/var/lib/mysql
+    networks:
+      - cpe_ctfd_dev_net

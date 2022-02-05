@@ -8,7 +8,7 @@ from wtforms import (
 )
 from wtforms.validators import InputRequired
 
-from CTFd.forms import BaseForm
+from forms import BaseForm
 
 
 class PageEditForm(BaseForm):

@@ -1,7 +1,7 @@
 import base64
 import codecs
 
-from CTFd.utils import string_types
+from utils import string_types
 
 
 def hexencode(s):

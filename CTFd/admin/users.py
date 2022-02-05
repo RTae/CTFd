@@ -1,11 +1,11 @@
 from flask import render_template, request, url_for
 from sqlalchemy.sql import not_
 
-from CTFd.admin import admin
-from CTFd.models import Challenges, Tracking, Users
-from CTFd.utils import get_config
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.modes import TEAMS_MODE
+from admin import admin
+from models import Challenges, Tracking, Users
+from utils import get_config
+from utils.decorators import admins_only
+from utils.modes import TEAMS_MODE
 
 
 @admin.route("/admin/users")

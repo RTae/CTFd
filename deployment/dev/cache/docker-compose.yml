@@ -1,0 +1,13 @@
+version: '3.8'
+networks:
+  cpe_ctfd_dev_net:
+    driver: bridge
+
+services:
+  cache:
+    container_name: cache.$PREFIX
+    image: redis:7.0-rc1-alpine
+    volumes:
+      - ~/cpe-ctfd-persistance-data/redis:/data
+    networks:
+      - cpe_ctfd_dev_net

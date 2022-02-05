@@ -1,7 +1,7 @@
 import datetime
 import time
 
-from CTFd.utils import get_config
+from utils import get_config
 
 
 def ctftime():

@@ -1,5 +1,5 @@
-from CTFd.models import Files, ma
-from CTFd.utils import string_types
+from models import Files, ma
+from utils import string_types
 
 
 class FileSchema(ma.ModelSchema):

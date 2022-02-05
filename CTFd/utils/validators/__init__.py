@@ -4,9 +4,9 @@ from urllib.parse import urljoin, urlparse
 from flask import request
 from marshmallow import ValidationError
 
-from CTFd.models import Users
-from CTFd.utils.countries import lookup_country_code
-from CTFd.utils.user import get_current_user, is_admin
+from models import Users
+from utils.countries import lookup_country_code
+from utils.user import get_current_user, is_admin
 
 EMAIL_REGEX = r"(^[^@\s]+@[^@\s]+\.[^@\s]+$)"
 

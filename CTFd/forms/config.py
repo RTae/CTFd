@@ -2,9 +2,9 @@ from wtforms import BooleanField, FileField, SelectField, StringField, TextAreaF
 from wtforms.fields.html5 import IntegerField, URLField
 from wtforms.widgets.html5 import NumberInput
 
-from CTFd.forms import BaseForm
-from CTFd.forms.fields import SubmitField
-from CTFd.utils.csv import get_dumpable_tables
+from forms import BaseForm
+from forms.fields import SubmitField
+from utils.csv import get_dumpable_tables
 
 
 class ResetInstanceForm(BaseForm):
@@ -31,7 +31,7 @@ class ResetInstanceForm(BaseForm):
 class AccountSettingsForm(BaseForm):
     domain_whitelist = StringField(
         "Account Email Whitelist",
-        description="Comma-seperated email domains which users can register under (e.g. ctfd.io, gmail.com, yahoo.com)",
+        description="Comma-seperated email domains which users can register under (e.g. io, gmail.com, yahoo.com)",
     )
     team_creation = SelectField(
         "Team Creation",

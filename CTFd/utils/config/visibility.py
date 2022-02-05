@@ -1,12 +1,12 @@
-from CTFd.constants.config import (
+from constants.config import (
     AccountVisibilityTypes,
     ChallengeVisibilityTypes,
     ConfigTypes,
     RegistrationVisibilityTypes,
     ScoreVisibilityTypes,
 )
-from CTFd.utils import get_config
-from CTFd.utils.user import authed, is_admin
+from utils import get_config
+from utils.user import authed, is_admin
 
 
 def challenges_visible():

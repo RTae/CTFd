@@ -13,22 +13,22 @@ from sqlalchemy.engine.url import make_url
 from sqlalchemy.exc import ProgrammingError
 from sqlalchemy.sql import sqltypes
 
-from CTFd import __version__ as CTFD_VERSION
-from CTFd.cache import cache
-from CTFd.constants.themes import DEFAULT_THEME
-from CTFd.models import db, get_class_by_tablename
-from CTFd.plugins import get_plugin_names
-from CTFd.plugins.migrations import current as plugin_current
-from CTFd.plugins.migrations import upgrade as plugin_upgrade
-from CTFd.utils import get_app_config, set_config, string_types
-from CTFd.utils.exports.freeze import freeze_export
-from CTFd.utils.migrations import (
+from . import __version__ as CTFD_VERSION
+from cache import cache
+from constants.themes import DEFAULT_THEME
+from models import db, get_class_by_tablename
+from plugins import get_plugin_names
+from plugins.migrations import current as plugin_current
+from plugins.migrations import upgrade as plugin_upgrade
+from utils import get_app_config, set_config, string_types
+from utils.exports.freeze import freeze_export
+from utils.migrations import (
     create_database,
     drop_database,
     get_current_revision,
     stamp_latest_revision,
 )
-from CTFd.utils.uploads import get_uploader
+from utils.uploads import get_uploader
 
 
 def export_ctf():

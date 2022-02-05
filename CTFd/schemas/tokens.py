@@ -1,5 +1,5 @@
-from CTFd.models import Tokens, ma
-from CTFd.utils import string_types
+from models import Tokens, ma
+from utils import string_types
 
 
 class TokenSchema(ma.ModelSchema):

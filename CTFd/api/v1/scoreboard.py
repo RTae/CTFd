@@ -3,16 +3,16 @@ from collections import defaultdict
 from flask_restx import Namespace, Resource
 from sqlalchemy import select
 
-from CTFd.cache import cache, make_cache_key
-from CTFd.models import Awards, Solves, Users, db
-from CTFd.utils import get_config
-from CTFd.utils.dates import isoformat, unix_time_to_utc
-from CTFd.utils.decorators.visibility import (
+from cache import cache, make_cache_key
+from models import Awards, Solves, Users, db
+from utils import get_config
+from utils.dates import isoformat, unix_time_to_utc
+from utils.decorators.visibility import (
     check_account_visibility,
     check_score_visibility,
 )
-from CTFd.utils.modes import TEAMS_MODE, generate_account_url, get_mode_as_word
-from CTFd.utils.scores import get_standings, get_user_standings
+from utils.modes import TEAMS_MODE, generate_account_url, get_mode_as_word
+from utils.scores import get_standings, get_user_standings
 
 scoreboard_namespace = Namespace(
     "scoreboard", description="Endpoint to retrieve scores"

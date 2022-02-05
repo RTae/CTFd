@@ -3,22 +3,22 @@ from typing import List
 from flask import request
 from flask_restx import Namespace, Resource
 
-from CTFd.api.v1.helpers.request import validate_args
-from CTFd.api.v1.helpers.schemas import sqlalchemy_to_pydantic
-from CTFd.api.v1.schemas import APIDetailedSuccessResponse, APIListSuccessResponse
-from CTFd.cache import clear_standings
-from CTFd.constants import RawEnum
-from CTFd.models import Unlocks, db, get_class_by_tablename
-from CTFd.schemas.awards import AwardSchema
-from CTFd.schemas.unlocks import UnlockSchema
-from CTFd.utils.decorators import (
+from api.v1.helpers.request import validate_args
+from api.v1.helpers.schemas import sqlalchemy_to_pydantic
+from api.v1.schemas import APIDetailedSuccessResponse, APIListSuccessResponse
+from cache import clear_standings
+from constants import RawEnum
+from models import Unlocks, db, get_class_by_tablename
+from schemas.awards import AwardSchema
+from schemas.unlocks import UnlockSchema
+from utils.decorators import (
     admins_only,
     authed_only,
     during_ctf_time_only,
     require_verified_emails,
 )
-from CTFd.utils.helpers.models import build_model_filters
-from CTFd.utils.user import get_current_user
+from utils.helpers.models import build_model_filters
+from utils.user import get_current_user
 
 unlocks_namespace = Namespace("unlocks", description="Endpoint to retrieve Unlocks")
 

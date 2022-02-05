@@ -1,10 +1,10 @@
 from sqlalchemy.sql.expression import union_all
 
-from CTFd.cache import cache
-from CTFd.models import Awards, Challenges, Solves, Teams, Users, db
-from CTFd.utils import get_config
-from CTFd.utils.dates import unix_time_to_utc
-from CTFd.utils.modes import get_model
+from cache import cache
+from models import Awards, Challenges, Solves, Teams, Users, db
+from utils import get_config
+from utils.dates import unix_time_to_utc
+from utils.modes import get_model
 
 
 @cache.memoize(timeout=60)

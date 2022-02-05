@@ -3,15 +3,15 @@ from typing import List
 from flask import abort, request, session
 from flask_restx import Namespace, Resource
 
-from CTFd.api.v1.helpers.request import validate_args
-from CTFd.api.v1.helpers.schemas import sqlalchemy_to_pydantic
-from CTFd.api.v1.schemas import (
+from api.v1.helpers.request import validate_args
+from api.v1.helpers.schemas import sqlalchemy_to_pydantic
+from api.v1.schemas import (
     APIDetailedSuccessResponse,
     PaginatedAPIListSuccessResponse,
 )
-from CTFd.cache import clear_standings, clear_user_session
-from CTFd.constants import RawEnum
-from CTFd.models import (
+from cache import clear_standings, clear_user_session
+from constants import RawEnum
+from models import (
     Awards,
     Notifications,
     Solves,
@@ -21,19 +21,19 @@ from CTFd.models import (
     Users,
     db,
 )
-from CTFd.schemas.awards import AwardSchema
-from CTFd.schemas.submissions import SubmissionSchema
-from CTFd.schemas.users import UserSchema
-from CTFd.utils.config import get_mail_provider
-from CTFd.utils.decorators import admins_only, authed_only, ratelimit
-from CTFd.utils.decorators.visibility import (
+from schemas.awards import AwardSchema
+from schemas.submissions import SubmissionSchema
+from schemas.users import UserSchema
+from utils.config import get_mail_provider
+from utils.decorators import admins_only, authed_only, ratelimit
+from utils.decorators.visibility import (
     check_account_visibility,
     check_score_visibility,
 )
-from CTFd.utils.email import sendmail, user_created_notification
-from CTFd.utils.helpers.models import build_model_filters
-from CTFd.utils.security.auth import update_user
-from CTFd.utils.user import get_current_user, get_current_user_type, is_admin
+from utils.email import sendmail, user_created_notification
+from utils.helpers.models import build_model_filters
+from utils.security.auth import update_user
+from utils.user import get_current_user, get_current_user_type, is_admin
 
 users_namespace = Namespace("users", description="Endpoint to retrieve Users")
 

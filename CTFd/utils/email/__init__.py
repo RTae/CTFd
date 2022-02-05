@@ -1,10 +1,10 @@
 from flask import url_for
 
-from CTFd.utils import get_config
-from CTFd.utils.config import get_mail_provider
-from CTFd.utils.email import mailgun, smtp
-from CTFd.utils.formatters import safe_format
-from CTFd.utils.security.signing import serialize
+from utils import get_config
+from utils.config import get_mail_provider
+from utils.email import mailgun, smtp
+from utils.formatters import safe_format
+from utils.security.signing import serialize
 
 DEFAULT_VERIFICATION_EMAIL_SUBJECT = "Confirm your account for {ctf_name}"
 DEFAULT_VERIFICATION_EMAIL_BODY = (

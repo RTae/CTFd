@@ -1,6 +1,6 @@
 # This file is no longer used. If you're importing the function from here please update your imports
 
-from CTFd.utils.helpers.models import build_model_filters as _build_model_filters
+from utils.helpers.models import build_model_filters as _build_model_filters
 
 
 def build_model_filters(model, query, field):

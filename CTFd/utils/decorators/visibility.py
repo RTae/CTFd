@@ -2,15 +2,15 @@ import functools
 
 from flask import abort, redirect, render_template, request, url_for
 
-from CTFd.constants.config import (
+from constants.config import (
     AccountVisibilityTypes,
     ChallengeVisibilityTypes,
     ConfigTypes,
     RegistrationVisibilityTypes,
     ScoreVisibilityTypes,
 )
-from CTFd.utils import get_config
-from CTFd.utils.user import authed, is_admin
+from utils import get_config
+from utils.user import authed, is_admin
 
 
 def check_score_visibility(f):

@@ -1,0 +1,33 @@
+version: '3.8'
+networks:
+  cpe_ctfd_dev_net:
+    driver: bridge
+
+services:
+  frontend:
+    container_name: frontend.$PREFIX
+    image: $IMAGE_NAME/frontend
+    command: >
+              bash -c "chmod +x /opt/CTFd/docker-entrypoint.sh &&
+              chown -R 1001:1001 /opt/CTFd /var/log/CTFd /var/uploads &&
+              bash docker-entrypoint.sh"
+    user: root
+    ports:
+      - "8000:8000"
+    environment:
+      - UPLOAD_FOLDER=/var/uploads
+      - LOG_FOLDER=/var/log/CTFd
+      - DATABASE_URL=mysql+pymysql://$DB_USER:$DB_PASSWORD@database.$PREFIX/$DB_DATABASE
+      - REDIS_URL=redis://cache.$PREFIX:6379
+      - WORKERS=1
+      - ACCESS_LOG=-
+      - ERROR_LOG=-
+      - REVERSE_PROXY=true
+      - SECRET_KEY:$SECRET_KEY
+    volumes:
+      - ./build-image/docker-entrypoint.sh:/opt/CTFd/docker-entrypoint.sh
+      - ~/cpe-ctfd-persistance-data/CTFd/logs:/var/log/CTFd
+      - ~/cpe-ctfd-persistance-data/CTFd/uploads:/var/uploads
+      - ../../../CTFd:/opt/CTFd
+    networks:
+      - cpe_ctfd_dev_net

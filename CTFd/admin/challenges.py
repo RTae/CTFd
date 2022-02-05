@@ -1,9 +1,9 @@
 from flask import abort, render_template, request, url_for
 
-from CTFd.admin import admin
-from CTFd.models import Challenges, Flags, Solves
-from CTFd.plugins.challenges import CHALLENGE_CLASSES, get_chal_class
-from CTFd.utils.decorators import admins_only
+from admin import admin
+from models import Challenges, Flags, Solves
+from plugins.challenges import CHALLENGE_CLASSES, get_chal_class
+from utils.decorators import admins_only
 
 
 @admin.route("/admin/challenges")

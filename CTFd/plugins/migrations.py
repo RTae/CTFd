@@ -8,7 +8,7 @@ from alembic.script import ScriptDirectory
 from flask import current_app
 from sqlalchemy import create_engine, pool
 
-from CTFd.utils import get_config, set_config
+from utils import get_config, set_config
 
 
 def current(plugin_name=None):

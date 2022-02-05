@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from CTFd.models import (
+from models import (
     ChallengeFiles,
     Challenges,
     Fails,
@@ -10,10 +10,10 @@ from CTFd.models import (
     Tags,
     db,
 )
-from CTFd.plugins import register_plugin_assets_directory
-from CTFd.plugins.flags import FlagException, get_flag_class
-from CTFd.utils.uploads import delete_file
-from CTFd.utils.user import get_ip
+from plugins import register_plugin_assets_directory
+from plugins.flags import FlagException, get_flag_class
+from utils.uploads import delete_file
+from utils.user import get_ip
 
 
 class BaseChallenge(object):
@@ -208,7 +208,7 @@ def get_chal_class(class_id):
 
 
 """
-Global dictionary used to hold all the Challenge Type classes used by CTFd. Insert into this dictionary to register
+Global dictionary used to hold all the Challenge Type classes used by  Insert into this dictionary to register
 your Challenge Type.
 """
 CHALLENGE_CLASSES = {"standard": CTFdStandardChallenge}

@@ -4,12 +4,12 @@ import shutil
 from flask_migrate import MigrateCommand
 from flask_script import Manager
 
-from CTFd import create_app
-from CTFd.utils import get_config as get_config_util
-from CTFd.utils import set_config as set_config_util
-from CTFd.utils.config import ctf_name
-from CTFd.utils.exports import export_ctf as export_ctf_util
-from CTFd.utils.exports import import_ctf as import_ctf_util
+from . import create_app
+from utils import get_config as get_config_util
+from utils import set_config as set_config_util
+from utils.config import ctf_name
+from utils.exports import export_ctf as export_ctf_util
+from utils.exports import import_ctf as import_ctf_util
 
 app = create_app()
 
@@ -18,7 +18,7 @@ manager.add_command("db", MigrateCommand)
 
 
 def jsenums():
-    from CTFd.constants import JS_ENUMS
+    from constants import JS_ENUMS
     import json
     import os
 

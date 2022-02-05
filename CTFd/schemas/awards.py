@@ -1,5 +1,5 @@
-from CTFd.models import Awards, ma
-from CTFd.utils import string_types
+from models import Awards, ma
+from utils import string_types
 
 
 class AwardSchema(ma.ModelSchema):

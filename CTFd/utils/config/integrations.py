@@ -1,4 +1,4 @@
-from CTFd.utils import get_app_config, get_config
+from utils import get_app_config, get_config
 
 
 def mlc():

@@ -1,10 +1,10 @@
 from flask import render_template
 
-from CTFd.admin import admin
-from CTFd.models import Challenges, Fails, Solves, Teams, Tracking, Users, db
-from CTFd.utils.decorators import admins_only
-from CTFd.utils.modes import get_model
-from CTFd.utils.updates import update_check
+from admin import admin
+from models import Challenges, Fails, Solves, Teams, Tracking, Users, db
+from utils.decorators import admins_only
+from utils.modes import get_model
+from utils.updates import update_check
 
 
 @admin.route("/admin/statistics", methods=["GET"])

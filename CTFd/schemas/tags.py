@@ -1,5 +1,5 @@
-from CTFd.models import Tags, ma
-from CTFd.utils import string_types
+from models import Tags, ma
+from utils import string_types
 
 
 class TagSchema(ma.ModelSchema):

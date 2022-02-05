@@ -5,9 +5,9 @@ from flask.sessions import SessionInterface, SessionMixin
 from itsdangerous import BadSignature, want_bytes
 from werkzeug.datastructures import CallbackDict
 
-from CTFd.cache import cache
-from CTFd.utils import text_type
-from CTFd.utils.security.signing import sign, unsign
+from cache import cache
+from utils import text_type
+from utils.security.signing import sign, unsign
 
 
 def total_seconds(td):
